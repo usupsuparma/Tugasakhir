@@ -24,7 +24,15 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	cv2.imshow("Frame", image)
 	key = cv2.waitKey(1) & 0xFF
 	if key == ord("c"):
-		cv2.imwrite("result.jpg", image, ROTATE_90_CLOCKWISE)
+		cv2.imwrite("result.jpg", image)
+		img = cv2.imread('result.jpg')
+		h,w = img.shape[:2]
+		center = (w/2,h/2)
+		rotate = cv2.getRotationMatrix2D(center,90,1)
+
+		rotatingImg = cv2.warpAffine(img,rotate,(w,h))
+		cv2.imshow('Rotating', rotatingImg)
+		cv2.imwrite('hasilrotate.jpg', rotatingImg)
 
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
