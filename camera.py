@@ -28,7 +28,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 		img = cv2.imread('result.jpg')
 		h,w = img.shape[:2]
 		center = (w/2,h/2)
-		rotate = cv2.getRotationMatrix2D(center,90,1)
+		rotate = cv2.getRotationMatrix2D(center,360-90,1)
 
 		rotatingImg = cv2.warpAffine(img,rotate,(w,h))
 		cv2.imshow('Rotating', rotatingImg)
