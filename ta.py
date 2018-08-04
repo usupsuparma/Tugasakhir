@@ -5,6 +5,7 @@ import argparse
 import cv2
 import os
 import playsound
+from picamera import PiCamera
 
 
 # class deteksi objek
@@ -92,9 +93,12 @@ while True:
             cond, frame = vidio.read()
             #cv2.imshow("Running Program", frame)
             time.sleep(1)
-            cv2.imwrite("user.jpg",frame)
+            # cv2.imwrite("user.jpg",frame)
             #check = ObjectDetection("image/kusi.jpg")
-            check = ObjectDetection("user.jpg")
+
+			#mengambil gambar dari modul
+			camera.capture('image.jpg')
+            check = ObjectDetection("image.jpg")
             if check is None:
                 print("Objek Tidak Teridentifikasi")
                 continue
