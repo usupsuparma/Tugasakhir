@@ -17,6 +17,7 @@ class Capture():
 
 
 	def rotate(self):
+		print("test")
 
 		# initialize the camera and grab a reference to the raw camera capture
 		camera = PiCamera()
@@ -134,7 +135,8 @@ while True:
 			#mengambil gambar dari modul
             #camera.capture('image.jpg')
 
-            rotateImg = Capture()
+            caputer = Capture()
+			rotateImg = caputer.rotate()
             check = ObjectDetection(rotateImg)
             if check is None:
                 print("Objek Tidak Teridentifikasi")
