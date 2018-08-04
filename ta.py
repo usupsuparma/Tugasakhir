@@ -28,7 +28,7 @@ class Capture():
 
 
 		# grab an image from the camera
-		camera.capture(rawCapture, format="bgr")
+		camera.capture(rawCapture, size=(480,480))
 		image = rawCapture.array
 		cv2.imwrite("result.jpg",image)
 		img = cv2.imread('result.jpg')
