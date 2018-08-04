@@ -140,7 +140,7 @@ while True:
 			#mengambil gambar dari modul
             #camera.capture('image.jpg')
 
-			rotateImg = Capture("user.jpg")
+            rotateImg = Capture("user.jpg")
             check = ObjectDetection(rotateImg)
             if check is None:
                 print("Objek Tidak Teridentifikasi")
