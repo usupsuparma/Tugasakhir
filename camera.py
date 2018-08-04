@@ -23,6 +23,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# show the frame
 	cv2.imshow("Frame", image)
 	key = cv2.waitKey(1) & 0xFF
+	if key == ord("c"):
+		cv2.imwrite("result.jpg", image)
 
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
