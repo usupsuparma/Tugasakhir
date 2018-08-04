@@ -97,7 +97,7 @@ while True:
             #check = ObjectDetection("image/kusi.jpg")
 
 			#mengambil gambar dari modul
-			camera.capture('image.jpg')
+            camera.capture('image.jpg')
             check = ObjectDetection("image.jpg")
             if check is None:
                 print("Objek Tidak Teridentifikasi")
