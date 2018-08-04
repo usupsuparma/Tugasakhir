@@ -12,38 +12,31 @@ from picamera.array import PiRGBArray
 class Capture():
 
 
-	def __init__(self, img):
-		self.__image = img
+	def __init__(self):
+		rotate(self)
+
 
 	def rotate(self):
+
+		# initialize the camera and grab a reference to the raw camera capture
 		camera = PiCamera()
-		camera.resolution = (1080, 720)
-		camera.framerate = 32
-		rawCapture = PiRGBArray(camera, size=(1080, 720))
+		rawCapture = PiRGBArray(camera)
 
-		# allow the camera to warmup
-		time.sleep(0.1)
+		#	 allow the camera to warmup
+	time.sleep(0.1)
 
-		# capture frames from the camera
-		for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-			# grab the raw NumPy array representing the image, then initialize the timestamp
-			# and occupied/unoccupied text
-			image = frame.array
+		# grab an image from the camera
+		camera.capture(rawCapture, format="bgr")
+		image = rawCapture.array
+		cv2.imwrite("result.jpg",image)
+		img = cv2.imread('result.jpg')
+		h,w = img.shape[:2]
+		center = (w/2,h/2)
+		rotate = cv2.getRotationMatrix2D(center,360-90,1)
 
-			img = cv2.imread(__image)
-			h,w = img.shape[:2]
-			center = (w/2,h/2)
-			rotate = cv2.getRotationMatrix2D(center,360-90,1)
-
-			rotatingImg = cv2.warpAffine(img,rotate,(w,h))
-			cv2.imshow('Rotating', rotatingImg)
-			cv2.imwrite('hasilrotate.jpg', rotatingImg)
-
-			# clear the stream in preparation for the next frame
-			rawCapture.truncate(0)
-			return rotatingImg
-
-			# if the `q` key was pressed, break from the loop
+		rotatingImg = cv2.warpAffine(img,rotate,(w,h))
+		cv2.imwrite('result.jpg', rotatingImg)
+		return 'result.jpg'
 
 
 
@@ -134,13 +127,13 @@ while True:
             cond, frame = vidio.read()
             #cv2.imshow("Running Program", frame)
             time.sleep(1)
-            cv2.imwrite("user.jpg",frame)
+            # cv2.imwrite("user.jpg",frame)
             #check = ObjectDetection("image/kusi.jpg")
 
 			#mengambil gambar dari modul
             #camera.capture('image.jpg')
 
-            rotateImg = Capture("user.jpg")
+            rotateImg = Capture()
             check = ObjectDetection(rotateImg)
             if check is None:
                 print("Objek Tidak Teridentifikasi")
