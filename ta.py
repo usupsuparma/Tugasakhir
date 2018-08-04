@@ -13,7 +13,7 @@ class Capture():
 
 
 	def __init__(self):
-		rotate(self)
+		pass
 
 
 	def rotate(self):
