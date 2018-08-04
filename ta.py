@@ -136,7 +136,7 @@ while True:
             #camera.capture('image.jpg')
 
             caputer = Capture()
-			rotateImg = caputer.rotate()
+            rotateImg = caputer.rotate()
             check = ObjectDetection(rotateImg)
             if check is None:
                 print("Objek Tidak Teridentifikasi")
