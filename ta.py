@@ -79,7 +79,7 @@ ap.add_argument("-c", "--confidence", type=float, default=0.8,
 args = vars(ap.parse_args())
 
 
-ser = serial.Serial('COM43', 9600)
+ser = serial.Serial('/dev/ttyUSB0', 9600)
 while True:
     try:
         output =int(ser.readline())
@@ -97,8 +97,8 @@ while True:
             #check = ObjectDetection("image/kusi.jpg")
 
 			#mengambil gambar dari modul
-            camera.capture('image.jpg')
-            check = ObjectDetection("image.jpg")
+            #camera.capture('image.jpg')
+            check = ObjectDetection("result.jpg")
             if check is None:
                 print("Objek Tidak Teridentifikasi")
                 continue
