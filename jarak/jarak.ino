@@ -1,19 +1,15 @@
 int pTrig = 11;
 int pEcho = 4;
 long durasi;
-int percobaan= 1;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   pinMode(pTrig, OUTPUT);
   pinMode(pEcho, INPUT);
-
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  
+void loop() {  
   int jarak = trig();
   Serial.println(jarak);
   delay(1000);
