@@ -10,6 +10,10 @@ from picamera.array import PiRGBArray
 
 #clas capture Gambar
 class Capture():
+	camera = PiCamera()
+	camera.resolution = (640, 480)
+	camera.framerate = 32
+	rawCapture = PiRGBArray(camera, size=(640, 480))
 
 
 	def __init__(self):
@@ -18,10 +22,7 @@ class Capture():
 
 	def takePic(self,distance):
 		self.__distance = distance
-		# camera = PiCamera()
-		camera.resolution = (640, 480)
-		camera.framerate = 32
-		rawCapture = PiRGBArray(camera, size=(640, 480))
+
 
 		# allow the camera to warmup
 		time.sleep(0.1)
@@ -61,8 +62,7 @@ class Capture():
 		print("test")
 
 		# initialize the camera and grab a reference to the raw camera capture
-		camera = PiCamera()
-		rawCapture = PiRGBArray(camera)
+
 
 		#	 allow the camera to warmup
 		time.sleep(0.1)
