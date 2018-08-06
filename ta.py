@@ -1,23 +1,16 @@
 import serial
-import time, string
+import time, string, argparse, cv2, os, playsound
 import numpy as np
-import argparse
-import cv2
-import os
-import playsound
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 
-#clas capture Gambar
+
 class Capture():
-	from picamera import PiCamera
-	from picamera.array import PiRGBArray
-	camera = PiCamera()
-	camera.resolution = (640, 480)
-	camera.framerate = 32
-	rawCapture = PiRGBArray(camera, size=(640, 480))
 
 
-	def __init__(self):
+
+	def __init__(self,distance,camera):
 		pass
 
 
@@ -157,6 +150,13 @@ ap.add_argument("-c", "--confidence", type=float, default=0.8,
                 help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
+camera = PiCamera()
+camera.resolution = (640, 480)
+camera.framerate = 32
+rawCapture = PiRGBArray(camera, size=(640, 480))
+#clas capture Gambar
+
+
 
 
 while True:
@@ -173,16 +173,15 @@ while True:
 			print("bahaya")
 
 			time.sleep(1)
-            # cv2.imwrite("user.jpg",frame)
-            #check = ObjectDetection("image/kusi.jpg")
 
-			#mengambil gambar dari modul
-            #camera.capture('image.jpg')
-			capture = Capture()
-			takePic = capture.takePic(output)
-			print(takePic)
+			# capture = Capture()
+			# takePic = capture.takePic(output)
+			#print(takePic)
             #rotateImg = capture.rotate()
-			check = ObjectDetection(takePic)
+			camera.capture(rawCapture, format="bgr")
+			image = rawCapture.array
+			cv2.imwrite("check.jpg",image)
+			check = ObjectDetection("check.jpg")
 			if check is None:
 				print("Objek Tidak Teridentifikasi")
 				continue
@@ -210,7 +209,7 @@ while True:
 					print("[Info] Gambar Tidak Teridentifikasi")
 
 
-
+			rawCapture.truncate(0)
 
             #os.remove("user.jpg")
 			print("=="*10)
