@@ -35,7 +35,7 @@ class Capture():
 			# cv2.imshow("Frame", image)
 			# key = cv2.waitKey(1) & 0xFF
 			print("jarak : ",self.__distance)
-			if self.__distance <= 50:
+			if self.__distance <= "50":
 				cv2.imwrite("a.jpg", image)
 				img = cv2.imread('a.jpg')
 				h,w = img.shape[:2]
