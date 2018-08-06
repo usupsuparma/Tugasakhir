@@ -46,7 +46,7 @@ class Capture():
 				#cv2.imshow('Rotating', rotatingImg)
 				cv2.imwrite('hasilrotate.jpg', rotatingImg)
 				rawCapture.truncate(0)
-				continue
+				break
 				return 'hasilrotate.jpg'
 
 			# clear the stream in preparation for the next frame
@@ -55,6 +55,7 @@ class Capture():
 			# if the `q` key was pressed, break from the loop
 			# if key == ord("q"):
 			# 	break
+		return 'hasilrotate.jpg'
 
 	def rotate(self):
 		print("test")
@@ -212,9 +213,7 @@ while True:
 
             #os.remove("user.jpg")
 			print("=="*10)
-			
+
 	except KeyboardInterrupt:
 		print('keluar dari program')
-		cv2.destroyAllWindows()
-		vidio.release()
 		break
