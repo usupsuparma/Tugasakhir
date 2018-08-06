@@ -5,11 +5,12 @@ import argparse
 import cv2
 import os
 import playsound
-from picamera import PiCamera as camera
-from picamera.array import PiRGBArray
+
 
 #clas capture Gambar
 class Capture():
+	from picamera import PiCamera as camera
+	from picamera.array import PiRGBArray
 	camera = PiCamera()
 	camera.resolution = (640, 480)
 	camera.framerate = 32
