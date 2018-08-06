@@ -52,9 +52,9 @@ class ObjectDetection():
 					# menampilkan hasil
 					# cv2.imshow("output",image)
 					# cv2.waitKey(0)
-					print(idx)
 
-					return label
+
+					return idx
 
 		except Exception as e:
 			print("[EROR] Gambar Tidak Teridentifikasi")
@@ -121,8 +121,8 @@ while True:
 			else:
 				try:
 					result = check.identifikasi()
-					print("cek hasil string: ",result[0:7])
-					if  "Manusia" is result[0:7]:
+					#print("cek hasil string: ",result[0:7])
+					if  result is 15:
 						print("manusia terdeteksi")
 						playsound.playsound('musik/manusia.mp3')
 					elif result[0:9] == "Sepeda Motor":
