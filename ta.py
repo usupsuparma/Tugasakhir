@@ -180,8 +180,15 @@ while True:
             #rotateImg = capture.rotate()
 			camera.capture(rawCapture, format="bgr")
 			image = rawCapture.array
-			cv2.imwrite("check.jpg",image)
-			check = ObjectDetection("check.jpg")
+			cv2.imwrite("result.jpg",image)
+			img = cv2.imread('result.jpg')
+			h,w = img.shape[:2]
+			center = (w/2,h/2)
+			rotate = cv2.getRotationMatrix2D(center,360-90,1)
+
+			rotatingImg = cv2.warpAffine(img,rotate,(w,h))
+			cv2.imwrite('result_rotate.jpg', rotatingImg)
+			check = ObjectDetection("result_rotate.jpg")
 			if check is None:
 				print("Objek Tidak Teridentifikasi")
 				continue
