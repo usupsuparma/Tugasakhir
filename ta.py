@@ -120,8 +120,8 @@ while True:
 			else:
 				try:
 					result = check.identifikasi()
-					print("cek hasil string: ",result[0:6])
-					if result[0:7] == "Manusia":
+					print("cek hasil string: ",result[0:7])
+					if result[0:7] is "Manusia":
 						print("manusia terdeteksi")
 						playsound.playsound('musik/manusia.mp3')
 					elif result[0:9] == "Sepeda Motor":
@@ -138,7 +138,8 @@ while True:
 
 				except Exception as e:
 					print("=="*10)
-					print("[Info] Gambar Tidak Teridentifikasi")
+					print("[Info] Eror System deteksi")
+					print("=="*10)
 
 
 			rawCapture.truncate(0)
