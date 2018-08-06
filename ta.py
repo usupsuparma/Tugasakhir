@@ -120,17 +120,17 @@ while True:
 			else:
 				try:
 					result = check.identifikasi()
-					print(result[0:6])
-					if result[0:6] == "person":
+					print("cek hasil string: ",result[0:6])
+					if result[0:6] == "Manusia":
 						print("manusia terdeteksi")
 						playsound.playsound('musik/manusia.mp3')
-					elif result[0:9] == "motorbike":
+					elif result[0:9] == "Sepeda Motor":
 						print("motor terdeteksi")
 						playsound.playsound('musik/motor.mp3')
-					elif result[0:3] == "car":
+					elif result[0:3] == "Mobil":
 						print("mobil terdeteksi")
 						playsound.playsound('musik/mobil.mp3')
-					elif result[0:4] == "chair":
+					elif result[0:4] == "Kursi":
 						print("kursi terdeteksi")
 						playsound.playsound('musik/kursi.mp3')
 
