@@ -5,7 +5,7 @@ import argparse
 import cv2
 import os
 import playsound
-from picamera import PiCamera
+from picamera import PiCamera as camera
 from picamera.array import PiRGBArray
 
 #clas capture Gambar
