@@ -16,6 +16,42 @@ class Capture():
 		pass
 
 
+	def takePic(self,distance):
+		self.__distance = distance
+		camera = PiCamera()
+		camera.resolution = (640, 480)
+		camera.framerate = 32
+		rawCapture = PiRGBArray(camera, size=(640, 480))
+
+		# allow the camera to warmup
+		time.sleep(0.1)
+
+		for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+			# grab the raw NumPy array representing the image, then initialize the timestamp
+			# and occupied/unoccupied text
+			image = frame.array
+
+			# show the frame
+			cv2.imshow("Frame", image)
+			key = cv2.waitKey(1) & 0xFF
+			if self.__distance <= 50:
+				cv2.imwrite("a.jpg", image)
+				img = cv2.imread('a.jpg')
+				h,w = img.shape[:2]
+				center = (w/2,h/2)
+				rotate = cv2.getRotationMatrix2D(center,360-90,1)
+
+				rotatingImg = cv2.warpAffine(img,rotate,(w,h))
+				cv2.imshow('Rotating', rotatingImg)
+				cv2.imwrite('hasilrotate.jpg', rotatingImg)
+
+			# clear the stream in preparation for the next frame
+			rawCapture.truncate(0)
+
+			# if the `q` key was pressed, break from the loop
+			if key == ord("q"):
+				break
+
 	def rotate(self):
 		print("test")
 
@@ -116,9 +152,10 @@ ap.add_argument("-c", "--confidence", type=float, default=0.8,
 args = vars(ap.parse_args())
 
 
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+
 while True:
     try:
+		ser = serial.Serial('/dev/ttyUSB0', 9600)
         output =int(ser.readline())
         print("nilai keluar: ", output)
         time.sleep(1)
@@ -126,8 +163,8 @@ while True:
             print("Jarak Aman")
         elif output <= 50:
             print("bahaya")
-            vidio = cv2.VideoCapture(0)
-            cond, frame = vidio.read()
+            # vidio = cv2.VideoCapture(0)
+            # cond, frame = vidio.read()
             #cv2.imshow("Running Program", frame)
             time.sleep(1)
             # cv2.imwrite("user.jpg",frame)
@@ -137,6 +174,7 @@ while True:
             #camera.capture('image.jpg')
 
             caputer = Capture()
+			takePic = campure.takePic(output)
             rotateImg = caputer.rotate()
             check = ObjectDetection(rotateImg)
             if check is None:
