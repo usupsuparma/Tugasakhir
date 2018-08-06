@@ -9,7 +9,7 @@ import playsound
 
 #clas capture Gambar
 class Capture():
-	from picamera import PiCamera as camera
+	from picamera import PiCamera
 	from picamera.array import PiRGBArray
 	camera = PiCamera()
 	camera.resolution = (640, 480)
