@@ -38,6 +38,7 @@ class Capture():
 
 		rotatingImg = cv2.warpAffine(img,rotate,(w,h))
 		cv2.imwrite('result.jpg', rotatingImg)
+		rawCapture.truncate(0)
 		return 'result.jpg'
 
 
