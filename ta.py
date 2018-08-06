@@ -5,81 +5,6 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 
 
-
-class Capture():
-
-
-
-	def __init__(self,distance,camera):
-		pass
-
-
-	def takePic(self,distance):
-		self.__distance = distance
-
-
-		# allow the camera to warmup
-		time.sleep(0.1)
-
-		for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-			# grab the raw NumPy array representing the image, then initialize the timestamp
-			# and occupied/unoccupied text
-			image = frame.array
-
-			# show the frame
-			# cv2.imshow("Frame", image)
-			# key = cv2.waitKey(1) & 0xFF
-			print("jarak : ",self.__distance)
-			if self.__distance is not 50 :
-				cv2.imwrite("a.jpg", image)
-				img = cv2.imread('a.jpg')
-				h,w = img.shape[:2]
-				center = (w/2,h/2)
-				rotate = cv2.getRotationMatrix2D(center,360-90,1)
-
-				rotatingImg = cv2.warpAffine(img,rotate,(w,h))
-				#cv2.imshow('Rotating', rotatingImg)
-				cv2.imwrite('hasilrotate.jpg', rotatingImg)
-				rawCapture.truncate(0)
-				break
-				return 'hasilrotate.jpg'
-
-			# clear the stream in preparation for the next frame
-			rawCapture.truncate(0)
-
-			# if the `q` key was pressed, break from the loop
-			# if key == ord("q"):
-			# 	break
-		return 'hasilrotate.jpg'
-
-	def rotate(self):
-		print("test")
-
-		# initialize the camera and grab a reference to the raw camera capture
-
-
-		#	 allow the camera to warmup
-		time.sleep(0.1)
-
-
-		# grab an image from the camera
-		camera.capture(rawCapture, format="bgr")
-		image = rawCapture.array
-		cv2.imwrite("result.jpg",image)
-		img = cv2.imread('result.jpg')
-		h,w = img.shape[:2]
-		center = (w/2,h/2)
-		rotate = cv2.getRotationMatrix2D(center,360-90,1)
-
-		rotatingImg = cv2.warpAffine(img,rotate,(w,h))
-		cv2.imwrite('result.jpg', rotatingImg)
-		rawCapture.truncate(0)
-		return 'result.jpg'
-
-
-
-
-
 # class deteksi objek
 class ObjectDetection():
 	__image = "test.jpg"
@@ -89,8 +14,8 @@ class ObjectDetection():
 
 	def identifikasi(self):
 		CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
-			"bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
-			"dog", "horse", "motorbike", "person", "pottedplant", "sheep",
+			"bottle", "bus", "Mobil", "cat", "Kursi", "cow", "diningtable",
+			"dog", "horse", "Sepeda Motor", "Manusia", "pottedplant", "sheep",
 			"sofa", "train", "tvmonitor"]
 		COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
