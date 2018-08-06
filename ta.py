@@ -174,7 +174,7 @@ while True:
             #camera.capture('image.jpg')
 
             caputer = Capture()
-			takePic = campure.takePic(output)
+            takePic = campure.takePic(output)
             rotateImg = caputer.rotate()
             check = ObjectDetection(rotateImg)
             if check is None:
