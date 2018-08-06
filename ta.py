@@ -157,66 +157,64 @@ args = vars(ap.parse_args())
 
 
 while True:
-    try:
-        ser = serial.Serial('/dev/ttyUSB0', 9600)
-        output =int(ser.readline())
-        print("nilai keluar: ", output)
-        time.sleep(1)
-        if output >= 50:
-            print("Jarak Aman")
-        elif output <= 50:
-            print("bahaya")
-            # vidio = cv2.VideoCapture(0)
-            # cond, frame = vidio.read()
-            #cv2.imshow("Running Program", frame)
-            time.sleep(1)
+	try:
+		ser = serial.Serial('/dev/ttyUSB0', 9600)
+		output =int(ser.readline())
+		print("nilai keluar: ", output)
+
+		time.sleep(1)
+
+		if output >= 50:
+			print("Jarak Aman")
+		elif output <= 50:
+			print("bahaya")
+
+			time.sleep(1)
             # cv2.imwrite("user.jpg",frame)
             #check = ObjectDetection("image/kusi.jpg")
 
 			#mengambil gambar dari modul
             #camera.capture('image.jpg')
-
-            capture = Capture()
-            takePic = capture.takePic(output)
+			capture = Capture()
+			takePic = capture.takePic(output)
 			print(takePic)
             #rotateImg = capture.rotate()
-            check = ObjectDetection(takePic)
-            if check is None:
-                print("Objek Tidak Teridentifikasi")
-                continue
-            else:
-                try:
-                    result = check.identifikasi()
-                    print(result[0:6])
-                    if result[0:6] == "person":
-                        print("manusia terdeteksi")
-                        playsound.playsound('musik/manusia.mp3')
-                    elif result[0:9] == "motorbike":
-	                    print("motor terdeteksi")
-	                    playsound.playsound('musik/motor.mp3')
-                    elif result[0:3] == "car":
-	                    print("mobil terdeteksi")
-	                    playsound.playsound('musik/mobil.mp3')
-                    elif result[0:4] == "chair":
-	                    print("kursi terdeteksi")
-	                    playsound.playsound('musik/kursi.mp3')
+			check = ObjectDetection(takePic)
+			if check is None:
+				print("Objek Tidak Teridentifikasi")
+				continue
+			else:
+				try:
+					result = check.identifikasi()
+					print(result[0:6])
+					if result[0:6] == "person":
+						print("manusia terdeteksi")
+						playsound.playsound('musik/manusia.mp3')
+					elif result[0:9] == "motorbike":
+						print("motor terdeteksi")
+						playsound.playsound('musik/motor.mp3')
+					elif result[0:3] == "car":
+						print("mobil terdeteksi")
+						playsound.playsound('musik/mobil.mp3')
+					elif result[0:4] == "chair":
+						print("kursi terdeteksi")
+						playsound.playsound('musik/kursi.mp3')
 
-                    print("hasil uji: ",result)
+					print("hasil uji: ",result)
 
-                except Exception as e:
-                    print("=="*10)
-                    print("[Info] Gambar Tidak Teridentifikasi")
+				except Exception as e:
+					print("=="*10)
+					print("[Info] Gambar Tidak Teridentifikasi")
 
 
 
 
             #os.remove("user.jpg")
-            print("=="*10)
-            cv2.destroyAllWindows()
-            vidio.release()
-
-    except KeyboardInterrupt:
-        print('keluar dari program')
-        cv2.destroyAllWindows()
-        vidio.release()
-        break
+			print("=="*10)
+			cv2.destroyAllWindows()
+			vidio.release()
+	except KeyboardInterrupt:
+		print('keluar dari program')
+		cv2.destroyAllWindows()
+		vidio.release()
+		break
