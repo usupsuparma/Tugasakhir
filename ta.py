@@ -50,8 +50,9 @@ class ObjectDetection():
 					cv2.putText(image, label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.5, COLORS[idx], 2)
 
 					# menampilkan hasil
-					cv2.imshow("output",image)
-					cv2.waitKey(0)
+					# cv2.imshow("output",image)
+					# cv2.waitKey(0)
+					print(idx)
 
 					return label
 
