@@ -121,7 +121,7 @@ while True:
 				try:
 					result = check.identifikasi()
 					print("cek hasil string: ",result[0:6])
-					if result[0:6] == "Manusia":
+					if result[0:7] == "Manusia":
 						print("manusia terdeteksi")
 						playsound.playsound('musik/manusia.mp3')
 					elif result[0:9] == "Sepeda Motor":
