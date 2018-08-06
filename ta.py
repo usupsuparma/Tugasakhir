@@ -120,7 +120,7 @@ while True:
 				continue
 			else:
 				try:
-					result = check.identifikasi()
+					result = int(check.identifikasi())
 					#print("cek hasil string: ",result[0:7])
 					if  result is 15:
 						print("manusia terdeteksi")
