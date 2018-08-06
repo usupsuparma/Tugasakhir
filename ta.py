@@ -42,15 +42,18 @@ class Capture():
 				rotate = cv2.getRotationMatrix2D(center,360-90,1)
 
 				rotatingImg = cv2.warpAffine(img,rotate,(w,h))
-				cv2.imshow('Rotating', rotatingImg)
+				#cv2.imshow('Rotating', rotatingImg)
 				cv2.imwrite('hasilrotate.jpg', rotatingImg)
+				rawCapture.truncate(0)
+				continue
+				return 'hasilrotate.jpg'
 
 			# clear the stream in preparation for the next frame
 			rawCapture.truncate(0)
 
 			# if the `q` key was pressed, break from the loop
-			if key == ord("q"):
-				break
+			# if key == ord("q"):
+			# 	break
 
 	def rotate(self):
 		print("test")
@@ -175,8 +178,9 @@ while True:
 
             capture = Capture()
             takePic = capture.takePic(output)
-            rotateImg = capture.rotate()
-            check = ObjectDetection(rotateImg)
+			print(takePic)
+            #rotateImg = capture.rotate()
+            check = ObjectDetection(takePic)
             if check is None:
                 print("Objek Tidak Teridentifikasi")
                 continue
