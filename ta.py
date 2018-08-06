@@ -121,9 +121,9 @@ while True:
         output =int(ser.readline())
         print("nilai keluar: ", output)
         time.sleep(1)
-        if output >= 10:
+        if output >= 50:
             print("Jarak Aman")
-        elif output <= 10:
+        elif output <= 50:
             print("bahaya")
             vidio = cv2.VideoCapture(0)
             cond, frame = vidio.read()
