@@ -155,7 +155,7 @@ args = vars(ap.parse_args())
 
 while True:
     try:
-		ser = serial.Serial('/dev/ttyUSB0', 9600)
+        ser = serial.Serial('/dev/ttyUSB0', 9600)
         output =int(ser.readline())
         print("nilai keluar: ", output)
         time.sleep(1)
