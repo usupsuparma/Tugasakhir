@@ -136,13 +136,14 @@ while True:
 						playsound.playsound('musik/mobil.mp3')
 					elif "Kursi" is result:
 						print("kursi terdeteksi")
-						playsound.playsound('musik/kursi.mp3')
+						playsound.playsound('kursi.mp3')
 
 					print("hasil uji: ",result)
 
 				except Exception as e:
 					print("=="*10)
 					print("[Info] Eror System deteksi")
+					print("eror",e)
 					print("=="*10)
 
 
