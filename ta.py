@@ -52,6 +52,23 @@ class ObjectDetection():
 					# menampilkan hasil
 					# cv2.imshow("output",image)
 					# cv2.waitKey(0)
+					result = int(check.identifikasi())
+					print(result)
+					#print("cek hasil string: ",result[0:7])
+					if  idx is 15:
+						print("manusia terdeteksi")
+						playsound.playsound('musik/manusia.mp3')
+					elif result == "Sepeda Motor":
+						print("motor terdeteksi")
+						playsound.playsound('musik/motor.mp3')
+					elif idx == "Mobil":
+						print("mobil terdeteksi")
+						playsound.playsound('musik/mobil.mp3')
+					elif idx == 9:
+						print("kursi terdeteksi")
+						playsound.playsound('musik/kursi.mp3')
+
+					print("hasil uji: ",result)
 
 
 					return idx
