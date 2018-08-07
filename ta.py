@@ -52,8 +52,6 @@ class ObjectDetection():
 					# menampilkan hasil
 					# cv2.imshow("output",image)
 					# cv2.waitKey(0)
-					result = int(check.identifikasi())
-					print(result)
 					#print("cek hasil string: ",result[0:7])
 					if  idx is 15:
 						print("manusia terdeteksi")
