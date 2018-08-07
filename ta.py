@@ -3,6 +3,7 @@ import time, string, argparse, cv2, os, playsound
 import numpy as np
 from picamera.array import PiRGBArray
 from picamera import PiCamera
+from pygame import mixer # Load the required library
 
 
 # class deteksi objek
@@ -136,7 +137,9 @@ while True:
 						playsound.playsound('musik/mobil.mp3')
 					elif "Kursi" is result:
 						print("kursi terdeteksi")
-						playsound.playsound('kursi.mp3')
+						mixer.init()
+						mixer.music.load('kursi.mp3')
+						mixer.music.play()
 
 					print("hasil uji: ",result)
 
