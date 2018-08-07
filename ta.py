@@ -43,6 +43,7 @@ class ObjectDetection():
 
 					#display the prediction
 					label = "{}: {:.2f}%".format(CLASSES[idx], confidence * 100)
+					coba = "{}: ".format(CLASSES[idx])
 					print("[INFO] {}".format(label))
 					cv2.rectangle(image, (startX, startY), (endX, endY), COLORS[idx], 2)
 
@@ -53,23 +54,9 @@ class ObjectDetection():
 					# cv2.imshow("output",image)
 					# cv2.waitKey(0)
 					#print("cek hasil string: ",result[0:7])
-					if  idx is 15:
-						print("manusia terdeteksi")
-						playsound.playsound('musik/manusia.mp3')
-					elif result == "Sepeda Motor":
-						print("motor terdeteksi")
-						playsound.playsound('musik/motor.mp3')
-					elif idx == "Mobil":
-						print("mobil terdeteksi")
-						playsound.playsound('musik/mobil.mp3')
-					elif idx == 9:
-						print("kursi terdeteksi")
-						playsound.playsound('musik/kursi.mp3')
-
-					print("hasil uji: ",result)
 
 
-					return idx
+					return coba
 
 		except Exception as e:
 			print("[EROR] Gambar Tidak Teridentifikasi")
@@ -135,7 +122,7 @@ while True:
 				continue
 			else:
 				try:
-					result = int(check.identifikasi())
+					result = check.identifikasi()
 					print(result)
 					#print("cek hasil string: ",result[0:7])
 					if  result is 15:
