@@ -131,19 +131,25 @@ while True:
 						mixer.init()
 						mixer.music.load('musik/manusia.mp3')
 						mixer.music.play()
-						time.sleep(5)
+						time.sleep(6)
 					elif result is "Sepeda Motor":
 						print("motor terdeteksi")
-						playsound.playsound('musik/motor.mp3')
+						mixer.init()
+						mixer.music.load('musik/motor.mp3')
+						mixer.music.play()
+						time.sleep(7)
 					elif result is "Mobil":
 						print("mobil terdeteksi")
-						playsound.playsound('musik/mobil.mp3')
+						mixer.init()
+						mixer.music.load('musik/mobil.mp3')
+						mixer.music.play()
+						time.sleep(6)
 					elif "Kursi" is result:
 						print("kursi terdeteksi")
 						mixer.init()
-						mixer.music.load('kursi.mp3')
+						mixer.music.load('musik/kursi.mp3')
 						mixer.music.play()
-						time.sleep(5)
+						time.sleep(7)
 
 					print("hasil uji: ",result)
 
