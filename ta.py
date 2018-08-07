@@ -134,7 +134,7 @@ while True:
 					elif result is "Mobil":
 						print("mobil terdeteksi")
 						playsound.playsound('musik/mobil.mp3')
-					elif result is "Kursi":
+					elif "Kursi" is result:
 						print("kursi terdeteksi")
 						playsound.playsound('musik/kursi.mp3')
 
