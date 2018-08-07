@@ -128,7 +128,10 @@ while True:
 					#print("cek hasil string: ",result[0:7])
 					if  result is "Manusia":
 						print("manusia terdeteksi")
-						playsound.playsound('musik/manusia.mp3')
+						mixer.init()
+						mixer.music.load('musik/manusia.mp3')
+						mixer.music.play()
+						time.sleep(5)
 					elif result is "Sepeda Motor":
 						print("motor terdeteksi")
 						playsound.playsound('musik/motor.mp3')
@@ -140,6 +143,7 @@ while True:
 						mixer.init()
 						mixer.music.load('kursi.mp3')
 						mixer.music.play()
+						time.sleep(5)
 
 					print("hasil uji: ",result)
 
