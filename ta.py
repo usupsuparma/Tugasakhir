@@ -92,7 +92,7 @@ while True:
 	try:
 		ser = serial.Serial('/dev/ttyUSB1', 9600)
 		output =int(ser.readline())
-		print("nilai keluar: ", output)
+		print("Distance Measuring: ", output)
 
 		time.sleep(1)
 
