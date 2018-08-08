@@ -96,9 +96,9 @@ while True:
 
 		time.sleep(1)
 
-		if output >= 50:
+		if output >= 100:
 			print("Jarak Aman")
-		elif output <= 50:
+		elif output <= 100:
 			print("bahaya")
 
 			time.sleep(1)
@@ -109,15 +109,15 @@ while True:
             #rotateImg = capture.rotate()
 			camera.capture(rawCapture, format="bgr")
 			image = rawCapture.array
-			cv2.imwrite("result.jpg",image)
-			img = cv2.imread('result.jpg')
+			cv2.imwrite("image/capture/result.jpg",image)
+			img = cv2.imread('image/capture/result.jpg')
 			h,w = img.shape[:2]
 			center = (w/2,h/2)
 			rotate = cv2.getRotationMatrix2D(center,360-90,1)
 
 			rotatingImg = cv2.warpAffine(img,rotate,(w,h))
-			cv2.imwrite('result_rotate.jpg', rotatingImg)
-			check = ObjectDetection("result_rotate.jpg")
+			cv2.imwrite('image/result/result_rotate.jpg', rotatingImg)
+			check = ObjectDetection("image/result/result_rotate.jpg")
 			if check is None:
 				print("Objek Tidak Teridentifikasi")
 				continue
