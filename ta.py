@@ -94,10 +94,13 @@ while True:
 		# pembacaan nilai serial
 		try:
 			ser = serial.Serial('/dev/ttyUSB0', 9600)
+			output =int(ser.readline())
+			print("Distance Measuring: ", output)
 		except Exception as e:
-			ser = serial.Serial('/dev/ttyUSB1', 9600)		
-		output =int(ser.readline())
-		print("Distance Measuring: ", output)
+			ser = serial.Serial('/dev/ttyUSB1', 9600)
+			output =int(ser.readline())
+			print("Distance Measuring: ", output)
+
 
 		time.sleep(1)
 
