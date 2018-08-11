@@ -1,4 +1,4 @@
-import serial
+#inisialisasi pin dan kelas yang akan digunakan
 import time, string, argparse, cv2, os, playsound
 import numpy as np
 from picamera.array import PiRGBArray
@@ -14,6 +14,7 @@ class ObjectDetection():
 		self.__image = img
 
 	def identifikasi(self):
+
 		CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 			"bottle", "bus", "Mobil", "cat", "Kursi", "cow", "diningtable",
 			"dog", "horse", "Sepeda Motor", "Manusia", "pottedplant", "sheep",
@@ -90,6 +91,7 @@ rawCapture = PiRGBArray(camera, size=(640, 480))
 
 while True:
 	try:
+		# pembacaan nilai serial
 		ser = serial.Serial('/dev/ttyUSB1', 9600)
 		output =int(ser.readline())
 		print("Distance Measuring: ", output)
@@ -107,12 +109,17 @@ while True:
 			# takePic = capture.takePic(output)
 			#print(takePic)
             #rotateImg = capture.rotate()
+			#proses ambil gambar
 			camera.capture(rawCapture, format="bgr")
 			image = rawCapture.array
+
+			#proses simpan gambar
 			cv2.imwrite("image/capture/result.jpg",image)
 			img = cv2.imread('image/capture/result.jpg')
 			h,w = img.shape[:2]
 			center = (w/2,h/2)
+
+			#proses rotasi gambar
 			rotate = cv2.getRotationMatrix2D(center,360-90,1)
 
 			rotatingImg = cv2.warpAffine(img,rotate,(w,h))

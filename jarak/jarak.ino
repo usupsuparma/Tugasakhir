@@ -1,7 +1,7 @@
+//Inisialisasi Pin
 int pTrig = 11;
 int pEcho = 4;
 long durasi;
-int jarak = 100;
 
 void setup() {
   // put your setup code here, to run once:
