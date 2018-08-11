@@ -11,7 +11,7 @@ void setup() {
 }
 
 void loop() {  
-  jarak = trig();
+  int jarak = trig();
   Serial.println(jarak);
   delay(1000);
 }
