@@ -18,11 +18,11 @@ void loop() {
 
 long trig(){
   digitalWrite(pTrig, LOW);
-  delayMicroseconds(1000);
+  delayMicroseconds(2);
   digitalWrite(pTrig, HIGH);
-  delayMicroseconds(1000);
+  delayMicroseconds(10);
   digitalWrite(pTrig, LOW);
   durasi = pulseIn(pEcho, HIGH);
-  return durasi / 29 / 2;
+  return (durasi / 29) / 2;
 }
 
