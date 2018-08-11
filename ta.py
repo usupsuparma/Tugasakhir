@@ -1,9 +1,8 @@
 #inisialisasi pin dan kelas yang akan digunakan
-import time, string, argparse, cv2, os, playsound
+import time, string, argparse, cv2, os, playsound, serial
 import numpy as np
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-from serial import *
 from pygame import mixer # Load the required library
 
 
