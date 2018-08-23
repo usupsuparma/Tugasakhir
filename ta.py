@@ -92,12 +92,15 @@ rawCapture = PiRGBArray(camera, size=(640, 480))
 while True:
 	try:
 		# pembacaan nilai serial
+		print('test')
 		try:
 			ser = serial.Serial('/dev/ttyUSB0', 9600)
 			output =int(ser.readline())
+			print("a")
 			print("Distance Measuring: ", output)
 		except Exception as e:
 			ser = serial.Serial('/dev/ttyUSB1', 9600)
+			print("b")
 			output =int(ser.readline())
 			print("Distance Measuring: ", output)
 

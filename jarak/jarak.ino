@@ -2,6 +2,7 @@
 int pTrig = 11;
 int pEcho = 4;
 long durasi;
+int jarak;
 
 void setup() {
   // put your setup code here, to run once:
@@ -11,7 +12,7 @@ void setup() {
 }
 
 void loop() {  
-  int jarak = trig();
+  jarak = trig();
   Serial.println(jarak);
   delay(1000);
 }
