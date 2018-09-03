@@ -1,6 +1,6 @@
 //Inisialisasi Pin
-int pTrig = 11;
-int pEcho = 4;
+int pTrig = 8;
+int pEcho = 7;
 long durasi;
 int jarak;
 
