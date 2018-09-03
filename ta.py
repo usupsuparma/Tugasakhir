@@ -82,7 +82,7 @@ class Lubang():
 		thresh = cv2.threshold(gray, 45, 255, cv2.THRESH_BINARY_INV)[1]
 		thresh = cv2.erode(thresh, None, iterations=2)
 		thresh = cv2.dilate(thresh, None, iterations=2)
-		cv2.imshow("Image",thresh)
+		#cv2.imshow("Image",thresh)
 
 		# find contours in thresholded image, then grab the largest one
 
@@ -105,6 +105,9 @@ class Lubang():
 		cv2.circle(image, extRight, 6, (0, 255, 0), -1)
 		cv2.circle(image, extTop, 6, (255, 0, 0), -1)
 		cv2.circle(image, extBot, 6, (255, 255, 0), -1)
+		cv2.imwrite('image/result/Lubang.jpg', image)
+
+		return 
 
 
 
@@ -208,6 +211,12 @@ while True:
 						time.sleep(7)
 					elif "none" is result:
 						print("identifikasi Lubang")
+						resut = Lubang("image/result/result_rotate.jpg")
+						mixer.init()
+						mixer.music.load('musik/lubang.mp3')
+						mixer.music.play()
+						time.sleep(5)
+
 
 
 
